@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0a1e;
+      color: #e8e0f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 14px;
+    }
+    
+    a { color:white; }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, #1a1035 0%, #2a1a50 100%);
+      padding: 14px 16px 12px;
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid rgba(244,163,64,0.2);
+    }
+    .header-icon  { font-size: 1.8em; }
+    .header-title { font-size: 1em; font-weight: 700; color: #F4A340; }
+    .header-sub   { font-size: 0.75em; color: #888; margin-top: 1px; }
+
+    /* ── Status card ─────────────────────────────────────────── */
+    .status-card {
+      margin: 12px 14px 0;
+      background: #1a1230; border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .status-label { font-size: 0.72em; color: #888; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .status-value { font-size: 1.1em; font-weight: 700; color: #F4A340; margin-bottom: 8px; }
+    .status-break { color: #ff7eb6; }
+    .bar-bg   { height: 6px; background: #2d2450; border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease, background 0.4s; background: #F4A340; }
+
+    /* ── Section ─────────────────────────────────────────────── */
+    .section {
+      margin: 12px 14px 0;
+      background: #1a1230; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+    .section-header {
+      padding: 9px 13px;
+      font-size: 0.72em; font-weight: 600;
+      color: #F4A340; text-transform: uppercase; letter-spacing: 0.8px;
+      background: rgba(244,163,64,0.06);
+      border-bottom: 1px solid rgba(244,163,64,0.1);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .section-body { padding: 12px 13px; }
+
+    /* ── Time fields ─────────────────────────────────────────── */
+    .time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .time-field label {
+      display: block; font-size: 0.78em; color: #aaa; margin-bottom: 5px; line-height: 1.3;
+    }
+    .time-input-row { display: flex; align-items: center; gap: 6px; }
+    input[type="number"] {
+      width: 64px; padding: 7px 8px;
+      background: #0f0a1e; color: #fff;
+      border: 1px solid #3d2e6e; border-radius: 7px;
+      font-size: 0.95em; text-align: center;
+    }
+    input[type="number"]:focus { outline: none; border-color: #F4A340; box-shadow: 0 0 0 2px rgba(244,163,64,0.15); }
+    .unit { font-size: 0.78em; color: #666; }
+
+    /* ── Domain list ─────────────────────────────────────────── */
+    .domain-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 9px; min-height: 10px; }
+    .domain-chip {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #0f0a1e; border: 1px solid #2d2060;
+      border-radius: 7px; padding: 6px 10px;
+      animation: chipIn 0.18s ease-out both;
+    }
+    @keyframes chipIn { from { opacity:0; transform:translateY(-4px) } to { opacity:1; transform:none } }
+    .domain-chip .name { font-size: 0.85em; color: #d0c8f0; font-family: monospace; }
+    .domain-chip .default-tag {
+      font-size: 0.65em; color: #554480; background: #1e1540;
+      border-radius: 4px; padding: 1px 5px; margin-left: 6px;
+    }
+    .btn-remove {
+      background: none; border: none; color: #4a3870; cursor: pointer;
+      font-size: 1.1em; padding: 0 2px; line-height: 1;
+      transition: color 0.15s;
+    }
+    .btn-remove:hover { color: #ff7eb6; }
+
+    .add-row { display: flex; gap: 6px; }
+    .add-row input[type="text"] {
+      flex: 1; padding: 7px 10px;
+      background: #0f0a1e; color: #fff;
+      border: 1px solid #3d2e6e; border-radius: 7px;
+      font-size: 0.85em; font-family: monospace;
+    }
+    .add-row input[type="text"]::placeholder { color: #443366; }
+    .add-row input[type="text"]:focus { outline: none; border-color: #F4A340; box-shadow: 0 0 0 2px rgba(244,163,64,0.15); }
+    .btn-add {
+      padding: 7px 12px;
+      background: rgba(244,163,64,0.12); color: #F4A340;
+      border: 1px solid rgba(244,163,64,0.3); border-radius: 7px;
+      font-size: 0.85em; font-weight: 600; cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .btn-add:hover { background: rgba(244,163,64,0.22); }
+    .add-error { font-size: 0.75em; color: #ff7eb6; margin-top: 5px; min-height: 14px; }
+
+    /* ── Bottom buttons ──────────────────────────────────────── */
+    .actions { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
+    .btn-save {
+      width: 100%; padding: 10px;
+      background: linear-gradient(135deg, #F4A340, #e08820);
+      color: #0f0a1e; border: none; border-radius: 8px;
+      font-weight: 700; font-size: 0.9em; cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-save:hover { opacity: 0.88; }
+    .btn-save.saved { background: linear-gradient(135deg, #4caf80, #2e8f5a); color: #fff; }
+    .btn-reset {
+      width: 100%; padding: 8px;
+      background: transparent; color: #554480;
+      border: 1px solid #2d2450; border-radius: 8px;
+      font-size: 0.8em; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-reset:hover { border-color: #F4A340; color: #F4A340; }
+    
+    .credits { 
+      text-align:center; 
+      margin-bottom:20px;
+    }
+
+    /* ── Empty state ─────────────────────────────────────────── */
+    .empty-state {
+      text-align: center; color: #443366;
+      font-size: 0.82em; padding: 8px 0 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <span class="header-icon">🐱</span>
+    <div>
+      <div class="header-title">La Pause Chat</div>
+      <div class="header-sub">Faites un break croquettes</div>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div class="status-card">
+    <div class="status-label">Temps sur les réseaux surveillés</div>
+    <div class="status-value" id="status-value">Chargement…</div>
+    <div class="bar-bg"><div class="bar-fill" id="bar-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- Timers -->
+  <div class="section">
+    <div class="section-header">⏱ Minuteries</div>
+    <div class="section-body">
+      <div class="time-grid">
+        <div class="time-field">
+          <label>Limite avant le chat</label>
+          <div class="time-input-row">
+            <input type="number" id="usageLimit" min="1" max="480" value="60">
+            <span class="unit">min</span>
+          </div>
+        </div>
+        <div class="time-field">
+          <label>Durée de la pause</label>
+          <div class="time-input-row">
+            <input type="number" id="breakTime" min="1" max="60" value="5">
+            <span class="unit">min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Domains -->
+  <div class="section">
+    <div class="section-header">🌐 Sites surveillés</div>
+    <div class="section-body">
+      <div class="domain-list" id="domain-list"></div>
+      <div class="add-row">
+        <input type="text" id="new-domain" placeholder="exemple.com" autocomplete="off" spellcheck="false">
+        <button class="btn-add" id="btn-add">+ Ajouter</button>
+      </div>
+      <div class="add-error" id="add-error"></div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button class="btn-save" id="btn-save">Enregistrer les modifications</button>
+    <button class="btn-reset" id="btn-reset">↺ Remettre le timer à zéro</button>
+  </div>
+  
+  <div class="section credits">
+    <div class="section-header">📜 Crédits</div>
+    <div class="section-body">
+      <p>Extension créée par <a href='https://orfaon.net/'>Orfaon.net</a></p>
+      <p>Inspirée de Cat Gatekeeper pour chrome (Auteur ZOKUZOKU).</p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

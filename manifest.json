@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "La Pause Chat",
+  "version": "1.1",
+  "description": "Une petite coupure des réseaux sociaux, ça fait pas de mal..",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "web_accessible_resources": ["background/cat.mp4"],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup2.html",
+    "default_icon": {
+      "48": "icons/icon.svg",
+      "96": "icons/icon.svg"
+    },
+    "default_title": "Cat Gatekeeper"
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  }
+}
