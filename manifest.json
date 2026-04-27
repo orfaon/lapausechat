@@ -7,6 +7,15 @@
     "tabs",
     "storage"
   ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "lapausechat@orfaon.net",
+      "strict_min_version": "109.0"
+    }
+  },
+  "data_collection": {
+    "data_collected": false
+  }
   "background": {
     "scripts": ["background.js"],
     "persistent": true
