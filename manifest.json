@@ -15,7 +15,7 @@
   },
   "data_collection": {
     "data_collected": false
-  }
+  },
   "background": {
     "scripts": ["background.js"],
     "persistent": true
