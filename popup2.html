@@ -6,49 +6,49 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #0f0a1e;
-      color: #e8e0f0;
+      background: #313647;
+      color: #A3B087;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       font-size: 14px;
     }
     
-    a { color:white; }
+    a { color:#FFF8D4; }
 
     /* ── Header ─────────────────────────────────────────────── */
     .header {
-      background: linear-gradient(135deg, #1a1035 0%, #2a1a50 100%);
+      background: linear-gradient(135deg, #313647 0%, #4e5672 100%);
       padding: 14px 16px 12px;
       display: flex; align-items: center; gap: 10px;
       border-bottom: 1px solid rgba(244,163,64,0.2);
     }
     .header-icon  { font-size: 1.8em; }
-    .header-title { font-size: 1em; font-weight: 700; color: #F4A340; }
-    .header-sub   { font-size: 0.75em; color: #888; margin-top: 1px; }
+    .header-title { font-size: 1em; font-weight: 700; color: #ffdc73; }
+    .header-sub   { font-size: 0.75em; color: #fff; margin-top: 1px; }
 
     /* ── Status card ─────────────────────────────────────────── */
     .status-card {
       margin: 12px 14px 0;
-      background: #1a1230; border-radius: 10px;
+      background: #1b2227; border-radius: 10px;
       padding: 12px 14px;
       border: 1px solid rgba(255,255,255,0.06);
     }
-    .status-label { font-size: 0.72em; color: #888; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .status-value { font-size: 1.1em; font-weight: 700; color: #F4A340; margin-bottom: 8px; }
+    .status-label { font-size: 0.72em; color: #ffffff; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .status-value { font-size: 1.1em; font-weight: 700; color: #FFF8D4; margin-bottom: 8px; }
     .status-break { color: #ff7eb6; }
-    .bar-bg   { height: 6px; background: #2d2450; border-radius: 3px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease, background 0.4s; background: #F4A340; }
+    .bar-bg   { height: 6px; background: #435663; border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease, background 0.4s; background: #FFF8D4; }
 
     /* ── Section ─────────────────────────────────────────────── */
     .section {
       margin: 12px 14px 0;
-      background: #1a1230; border-radius: 10px;
+      background: #1b2227; border-radius: 10px;
       border: 1px solid rgba(255,255,255,0.06);
       overflow: hidden;
     }
     .section-header {
       padding: 9px 13px;
       font-size: 0.72em; font-weight: 600;
-      color: #F4A340; text-transform: uppercase; letter-spacing: 0.8px;
+      color: #FFF; text-transform: uppercase; letter-spacing: 0.8px;
       background: rgba(244,163,64,0.06);
       border-bottom: 1px solid rgba(244,163,64,0.1);
       display: flex; align-items: center; gap: 6px;
@@ -63,29 +63,29 @@
     .time-input-row { display: flex; align-items: center; gap: 6px; }
     input[type="number"] {
       width: 64px; padding: 7px 8px;
-      background: #0f0a1e; color: #fff;
-      border: 1px solid #3d2e6e; border-radius: 7px;
+      background: #000; color: #fff;
+      border: 1px solid #444; border-radius: 7px;
       font-size: 0.95em; text-align: center;
     }
-    input[type="number"]:focus { outline: none; border-color: #F4A340; box-shadow: 0 0 0 2px rgba(244,163,64,0.15); }
+    input[type="number"]:focus { outline: none; border-color: #FFF8D4; box-shadow: 0 0 0 2px rgba(244,163,64,0.15); }
     .unit { font-size: 0.78em; color: #666; }
 
     /* ── Domain list ─────────────────────────────────────────── */
     .domain-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 9px; min-height: 10px; }
     .domain-chip {
       display: flex; align-items: center; justify-content: space-between;
-      background: #0f0a1e; border: 1px solid #2d2060;
+      background: #000; border: 1px solid #252936;
       border-radius: 7px; padding: 6px 10px;
       animation: chipIn 0.18s ease-out both;
     }
     @keyframes chipIn { from { opacity:0; transform:translateY(-4px) } to { opacity:1; transform:none } }
     .domain-chip .name { font-size: 0.85em; color: #d0c8f0; font-family: monospace; }
     .domain-chip .default-tag {
-      font-size: 0.65em; color: #554480; background: #1e1540;
+      font-size: 0.65em; color: #000; background: #A3B087;
       border-radius: 4px; padding: 1px 5px; margin-left: 6px;
     }
     .btn-remove {
-      background: none; border: none; color: #4a3870; cursor: pointer;
+      background: none; border: none; color: #3c4155; cursor: pointer;
       font-size: 1.1em; padding: 0 2px; line-height: 1;
       transition: color 0.15s;
     }
@@ -94,15 +94,15 @@
     .add-row { display: flex; gap: 6px; }
     .add-row input[type="text"] {
       flex: 1; padding: 7px 10px;
-      background: #0f0a1e; color: #fff;
-      border: 1px solid #3d2e6e; border-radius: 7px;
+      background: #000; color: #fff;
+      border: 1px solid #888; border-radius: 7px;
       font-size: 0.85em; font-family: monospace;
     }
-    .add-row input[type="text"]::placeholder { color: #443366; }
-    .add-row input[type="text"]:focus { outline: none; border-color: #F4A340; box-shadow: 0 0 0 2px rgba(244,163,64,0.15); }
+    .add-row input[type="text"]::placeholder { color: #20232f; }
+    .add-row input[type="text"]:focus { outline: none; border-color: #A3B087; box-shadow: 0 0 0 2px rgba(244,163,64,0.15); }
     .btn-add {
       padding: 7px 12px;
-      background: rgba(244,163,64,0.12); color: #F4A340;
+      background: rgba(244,163,64,0.12); color: #A3B087;
       border: 1px solid rgba(244,163,64,0.3); border-radius: 7px;
       font-size: 0.85em; font-weight: 600; cursor: pointer;
       transition: background 0.15s;
@@ -115,7 +115,7 @@
     .actions { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
     .btn-save {
       width: 100%; padding: 10px;
-      background: linear-gradient(135deg, #F4A340, #e08820);
+      background: linear-gradient(135deg, #F4A340, #A3B087);
       color: #0f0a1e; border: none; border-radius: 8px;
       font-weight: 700; font-size: 0.9em; cursor: pointer;
       transition: opacity 0.2s;
@@ -124,16 +124,17 @@
     .btn-save.saved { background: linear-gradient(135deg, #4caf80, #2e8f5a); color: #fff; }
     .btn-reset {
       width: 100%; padding: 8px;
-      background: transparent; color: #554480;
-      border: 1px solid #2d2450; border-radius: 8px;
+      background: transparent; color: #FFF8D4;
+      border: 1px solid #FFF8D4; border-radius: 8px;
       font-size: 0.8em; cursor: pointer;
       transition: border-color 0.2s, color 0.2s;
     }
-    .btn-reset:hover { border-color: #F4A340; color: #F4A340; }
+    .btn-reset:hover { border-color: #A3B087; color: #A3B087; }
     
     .credits { 
       text-align:center; 
       margin-bottom:20px;
+      font-size: 0.8em; 
     }
 
     /* ── Empty state ─────────────────────────────────────────── */
