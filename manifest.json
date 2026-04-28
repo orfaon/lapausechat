@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "La Pause Chat",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Une petite coupure des réseaux sociaux, ça fait pas de mal..",
   "permissions": [
     "tabs",
@@ -10,7 +10,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "lapausechat@orfaon.net",
-      "strict_min_version": "109.0",
+      "strict_min_version": "142.0",
       "data_collection_permissions": {
         "required": ["none"]
       }
